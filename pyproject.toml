@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentic-grc-access-review"
+version = "0.1.0"
+description = "A User Access Review agent built to the Agentic GRC Standard"
+requires-python = ">=3.10"
+dependencies = [
+    "anthropic>=0.40.0",
+    "pydantic>=2.0",
+]
+
+[tool.setuptools]
+packages = ["access_review", "access_review.connectors"]
