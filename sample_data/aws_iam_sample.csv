@@ -1,0 +1,17 @@
+user,user_creation_time,password_last_used,access_key_1_last_used_date,access_key_2_last_used_date,mfa_active,attached_policy,department
+alice.chen,2023-01-15T00:00:00Z,2026-10-20T09:00:00Z,2026-10-19T14:00:00Z,,true,ReadOnlyAccess,Engineering
+bob.martinez,2022-06-01T00:00:00Z,2024-02-10T00:00:00Z,,,false,AdministratorAccess,Finance
+carol.nguyen,2024-03-20T00:00:00Z,2026-10-22T11:00:00Z,,,true,PowerUserAccess,Engineering
+dave.okafor,2021-11-05T00:00:00Z,,2026-10-15T08:00:00Z,,true,AdministratorAccess,Engineering
+erin.walsh,2023-08-12T00:00:00Z,2025-01-05T00:00:00Z,,,false,Finance-Billing-ReadOnly,Finance
+frank.lee,2024-01-01T00:00:00Z,2026-10-24T10:00:00Z,,,true,S3FullAccess-Legacy-DoNotUse,Marketing
+grace.kim,2020-05-20T00:00:00Z,2026-09-01T00:00:00Z,2026-09-01T00:00:00Z,,true,ReadOnlyAccess,HR
+henry.patel,2022-09-09T00:00:00Z,2023-09-09T00:00:00Z,2023-09-09T00:00:00Z,,false,AdministratorAccess,Engineering
+irene.santos,2025-02-14T00:00:00Z,2026-10-25T00:00:00Z,,,true,DevOps-InfraWrite,Engineering
+jack.nolan,2023-04-04T00:00:00Z,,,,false,PowerUserAccess,Sales
+karen.osei,2024-07-07T00:00:00Z,2026-10-18T00:00:00Z,,,true,ReadOnlyAccess,Finance
+liam.brooks,2021-02-02T00:00:00Z,2024-05-01T00:00:00Z,,,true,AdministratorAccess,IT
+maria.gomez,2023-11-11T00:00:00Z,2026-10-26T00:00:00Z,,,true,Finance-Billing-Admin,Finance
+noah.fischer,2022-12-01T00:00:00Z,2026-10-23T00:00:00Z,,,false,ReadOnlyAccess,Engineering
+olivia.turner,2024-09-09T00:00:00Z,2026-10-21T00:00:00Z,,,true,AdministratorAccess,Marketing
+peter.zhang,2020-01-01T00:00:00Z,2026-10-26T00:00:00Z,,,true,S3ReadOnly-Reporting,Engineering
