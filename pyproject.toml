@@ -14,3 +14,6 @@ dependencies = [
 
 [tool.setuptools]
 packages = ["access_review", "access_review.connectors"]
+
+[tool.setuptools.package-data]
+access_review = ["default_policy.md"]

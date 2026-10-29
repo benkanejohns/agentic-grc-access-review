@@ -15,6 +15,7 @@ from pathlib import Path
 from access_review.classify import classify
 from access_review.connectors.aws import AWSIAMConnector
 from access_review.models import AccessRecord, Classification, ReviewVerdict
+from access_review.policy import missing_categories, parse_policy
 from access_review.report import render
 from access_review.rules import evaluate
 from access_review.runlog import append, load, new_run_path
@@ -28,11 +29,21 @@ def cmd_review(args: argparse.Namespace) -> None:
     connector = CONNECTORS[args.connector]
     records = connector.load(Path(args.input))
 
+    policy_path = Path(args.policy) if args.policy else None
+    policy = parse_policy(policy_path, model=args.model)
+    gaps = missing_categories(policy)
+    if gaps:
+        print(
+            f"WARNING: policy does not define: {', '.join(g.value for g in gaps)}. "
+            "The corresponding check will not be applied this run.",
+            file=sys.stderr,
+        )
+
     run_path = new_run_path()
     rows = []
     for record in records:
         classification = classify(record, model=args.model)
-        verdict = evaluate(record, classification)
+        verdict = evaluate(record, classification, policy)
         append(run_path, record, classification, verdict, args.model)
         rows.append((record, classification, verdict))
 
@@ -68,6 +79,11 @@ def main() -> None:
     review.add_argument("--input", required=True, help="Path to the export file")
     review.add_argument("--connector", choices=CONNECTORS.keys(), default="aws")
     review.add_argument("--model", default="claude-sonnet-5")
+    review.add_argument(
+        "--policy",
+        default=None,
+        help="Path to a policy document; defaults to the bundled sample IAM policy",
+    )
     review.set_defaults(func=cmd_review)
 
     replay = sub.add_parser(
